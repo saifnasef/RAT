@@ -1,12 +1,11 @@
 @echo off
-:: BatchGotAdmin
-:-------------------------------------
+
 if "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) else (
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system")
 if '%errorlevel%' NEQ '0' (
-    @rem echo Requesting administrative privileges...
+    @rem echo request admin
     goto UACPrompt
 ) else ( goto gotAdmin )
 
@@ -20,4 +19,5 @@ if '%errorlevel%' NEQ '0' (
     exit /B
 
 :gotAdmin
-    powershell powershell.exe
+    %cd%
+    del Starter.bat
