@@ -20,5 +20,4 @@ if '%errorlevel%' NEQ '0' (
     exit /B
 
 :gotAdmin
-    pushd "%CD%"
-    CD /D "%~dp0"
+    powershell powershell.exe
