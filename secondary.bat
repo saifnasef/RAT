@@ -1,1 +1,1 @@
-powershell powershell.exe
+echo sss > ss.txt
