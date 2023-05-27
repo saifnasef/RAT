@@ -1,3 +1,4 @@
+@echo off
 set "currentd=%cd%"
 set "username=saifa"
 

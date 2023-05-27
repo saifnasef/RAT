@@ -134,7 +134,6 @@ def commander(adminsock):
                     vicsoc = clients[user]
                     while command != "back":
                         thread.start_new_thread(tout, (vicsoc,adminsock,command, ))
-                        time.sleep(0.5)
                         adminsock.send(b"\nEnter Comamand: ")
                         command = adminsock.recv(1024).decode().strip()
                     break
