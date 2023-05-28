@@ -75,6 +75,7 @@ def check(sock):
     online = '[' + ', '.join(unames) + ']\nThere are ' + str(len(unames)) + ' online clients'
     print(online)
     sock.send(online.encode())
+    adminsock.send(b"\nChoose Option Number: ")
 
 
 def disconnection(s):
