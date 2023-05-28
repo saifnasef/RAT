@@ -1,6 +1,6 @@
 @echo off
 set "currentd=%cd%"
-set "username=saifa"
+@rem set "username=saifa"
 set "targetd=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 cd %targetd%
 
