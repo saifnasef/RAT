@@ -136,10 +136,9 @@ def commander(adminsock):
                         thread.start_new_thread(tout, (vicsoc,adminsock,command, ))
                         adminsock.send(b"\nEnter Comamand: ")
                         command = adminsock.recv(1024).decode().strip()
-                    break
                     
                 except:
-                    break
+                    pass
         adminsock.send(b"\nChoose Option Number: ")
     return
 
