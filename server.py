@@ -91,7 +91,7 @@ def tout(sock, adminsock, command):
     try:
         sock.send(command.encode())
         data = sock.recv(1024).decode()
-        print(data, "response")
+        #print(data, "response")
         adminsock.send(data.encode())
     except:
         adminsock.send(b"Error happened with connected computer :/\n")

