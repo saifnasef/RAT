@@ -140,7 +140,10 @@ def commander(adminsock):
                     
                 except:
                     pass
-        adminsock.send(b"\nChoose Option Number: ")
+        try:
+            adminsock.send(b"\nChoose Option Number: ")
+        except:
+            pass
     return
 
 
