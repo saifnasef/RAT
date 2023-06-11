@@ -1,7 +1,6 @@
-@REM TODO: add UAC bypass
 @echo off
-@REM change me
-@rem set "username=saifa"
+
+
 if "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) else (
