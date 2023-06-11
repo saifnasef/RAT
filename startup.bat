@@ -23,4 +23,4 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 
 
-start "" C:\Users\%username%\AppData\Local\Temp\MicroWindows\rev.exe
+C:\Users\%username%\AppData\Local\Temp\MicroWindows\rev.exe
