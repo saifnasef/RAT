@@ -179,7 +179,7 @@ def main():
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.bind(('192.168.1.107', 8080))
+server_socket.bind(('192.168.1.105', 8080))
 server_socket.listen()
 socks.append(server_socket)
 print("Server listening on port 8080...")
