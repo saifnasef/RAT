@@ -74,7 +74,7 @@ while True:
                         client_socket.send(output.encode())
                         #print("sent")
                     except:
-                        pass
+                        client_socket.send("error\n".encode())
             except:
                 break
     except:
