@@ -22,6 +22,7 @@ while True:
         #print("trying to connect")
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((server_address, server_port))
+        print("ues")
         time.sleep(1)
         client_socket.send(username.encode())
         #print("send")

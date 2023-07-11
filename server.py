@@ -73,7 +73,7 @@ def newcon(soc):
 
 def check(adminsock):
     online = '\n[' + ', '.join(unames) + ']\nThere are ' + str(len(unames)) + ' online clients'
-    print(online)
+    #print(online)
     adminsock.send(online.encode())
     adminsock.send(b"\nChoose Option Number: ")
     
@@ -91,7 +91,7 @@ def disconnection(s):
 def tout(sock, adminsock, command):
     try:
         sock.send(command.encode())
-        print("sent")
+        #print("sent")
         data = sock.recv(1024).decode()
         #print(data, "response")
         adminsock.send(data.encode())

